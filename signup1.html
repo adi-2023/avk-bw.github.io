@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AVK-BW/User-login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(to right, #595858, #3533CD);
+        }
+        header {
+            background: linear-gradient(to right, #595858, #3533CD);
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            
+        }
+        .container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+        }
+        .user-logo {
+          background-color: transparent;
+            width: 600px;
+            height: 420px;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            
+        }
+        .nav-buttons {
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .nav-button {
+            padding: 10px 20px;
+            background-color: #4a32c2;
+            color: black;
+            font-size: 20px;
+            border: none;
+            white-space: 1px;
+            border-radius: 35px;
+            cursor: pointer;
+            width: 180px;
+            height: 49.1px;
+        }
+        .login-form {
+            background-color: white;
+            border-radius: 35px;
+            padding: 20px;
+            width: 429.4px;
+            height: 300px;
+            box-shadow: 0px 0px 10px rgb(62, 12, 227);
+            margin-top: 20px;
+            text-align: center;
+            position: absolute;
+            top: 200px;
+            right: 160px;
+        }
+        .login-input {
+            background-color: #5741C6;
+            border: 1px solid #000;
+            color: #fff;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .login-button {
+            background-color: #5741C6;
+            color: white;
+            border: none;
+            border-radius: 35px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 180px;
+            height: 49.1px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to Digital Bank</h1>
+        <div class="nav-buttons">
+            <button class="nav-button">Savings</button>
+            <button class="nav-button">Current</button>
+            <button class="nav-button">Funds Transfer</button>
+            <button class="nav-button">Funds Status</button>
+        </div>
+    </header>
+    <div class="container">
+        <div class="user-logo">
+          <center>
+            <img src="background/1000023817_96cb67484916c4d4b898885b5bc99abd-25_12_2022__8_13_47_pm-removebg-preview-removebg-preview.png">
+            <h1>Digital Bank</h1>
+          </center>
+        </div>
+        <div class="login-form">
+            <h2>View your<br>Account</h2>
+            <form>
+              <label class="login-name">User name:</label>
+                <input class="login-input" type="text" placeholder="Enter Username" id="login-name" name="login-name" required><br>
+              <label class="login-password">Password:</label>
+                <input class="login-input" type="password" placeholder="Enter Password" id="login-password" name="login-password" required>
+                <br>
+                <br>
+                <button class="login-button">Login</button>
+                <button class="login-button" type="button">Cancel</button>
+            </form>
+        </div>
+    </div> 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get form elements
+            const loginForm = document.querySelector(".login-form");
+            const loginNameInput = document.getElementById("login-name");
+            const loginPasswordInput = document.getElementById("login-password");
+    
+            // Function to validate the login form
+            function validateLoginForm() {
+                const username = loginNameInput.value.trim();
+                const password = loginPasswordInput.value.trim();
+    
+                if (username === "" || password === "") {
+                    alert("Please enter both username and password.");
+                    return false;
+                }
+    
+                // You can add more validation here if needed
+    
+                return true;
+            }
+    
+            // Event listener for the login button click
+            loginForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                if (validateLoginForm()) {
+                    // If form is valid, you can proceed with login logic here
+                    alert("Login successful!");
+                }
+            });
+    
+            // Event listener for the cancel button click
+            const cancelButton = document.querySelector(".login-button[type='button']");
+            cancelButton.addEventListener("click", function () {
+                loginNameInput.value = "";
+                loginPasswordInput.value = "";
+            });
+        });
+    </script>
+        
+</body>
+</html>

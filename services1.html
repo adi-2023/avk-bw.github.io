@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AVK-BW/homepage/Services&loans</title>
+    <style>
+        body {
+            background-image: url(background/wallpaperflare.com_wallpaper.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .header {
+            background: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+
+        .h1 {
+            margin-left: 20px;
+        }
+
+        .personal-loan-div {
+            background: #fff;
+            border-radius: 10px;
+            width: 300px;
+            height: 200px;
+            margin: 20px;
+            display: inline-block;
+            vertical-align: top;
+            text-align: center;
+        }
+
+        .personal-loan-div img {
+            width: 280px;
+            height: 150px;
+            border-radius: 5px;
+            margin: 10px auto;
+            display: block;
+            cursor: pointer;
+        }
+
+        .personal-loan-div a {
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            color: #333;
+            text-decoration: none;
+        }
+        
+        .logout-button {
+            background: black;
+            color: #fff;
+            border: #595858;
+            padding: 1px 2px;
+            white-space: nowrap;
+            border-radius: 25px;
+            box-sizing: border-box;
+            width: 120px;
+            height: 39.1px;
+            font-size: 22px;
+            font-weight: bolder;
+            margin-right: 10px;
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <img src="background/1000023817_96cb67484916c4d4b898885b5bc99abd-25_12_2022__8_13_47_pm-removebg-preview-removebg-preview.png" alt="AVK-BW Bank" width="130px">
+        <h1 class="h1">Services & Loans</h1>
+        <button class="logout-button">Logout</button>
+    </header>
+
+    <div>
+        <div class="personal-loan-div">
+            <a href="https://onlineapply.sbi.co.in/personal-banking/personal-loan">
+                <img  src="background/personal loan.jpg" alt="Personal Loan"  >
+                Personal Loan
+            </a>
+        </div>
+
+        <div class="personal-loan-div">
+            <a href="https://sbi.co.in/web/personal-banking/loans/auto-loans/sbi-new-car-loan-scheme">
+                <img src="background/car loan.jpg" alt="Vechile Loan" >
+                Vehicle Loan
+            </a>
+        </div>
+
+        <div class="personal-loan-div">
+            <a href="https://homeloans.sbi/">
+                <img src="background/home loan.jpg" alt="Home Loan" >
+                Home Loan
+            </a>
+        </div>
+
+        <div class="personal-loan-div">
+            <a href="https://sbi.co.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/education-loan-scheme#:~:text=SBI%20STUDENT%20LOAN%20SCHEME%20%20%20%20Loan,girl%20st%20...%20%201%20more%20rows%20">
+                <img src="background/student loan.jpg" alt="Student Loan">
+                Student Loan
+            </a>
+        </div>
+
+        <div class="personal-loan-div">
+            <a href="https://sbi.co.in/web/business/home">
+                <img src="background/business loan.webp" alt="Loan Option 5" >
+                Business Loan
+            </a>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Get the logout button element
+            const logoutButton = document.querySelector(".logout-button");
+    
+            // Event listener for the logout button click
+            logoutButton.addEventListener("click", function () {
+                // You can add logout logic here, such as redirecting to a logout page or clearing user session data
+                alert("Logged out successfully!");
+                // For demonstration purposes, let's simulate a logout by redirecting to a logout.html page
+                window.location.href = "logout.html";
+            });
+        });
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,294 @@
+!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficiary Creation</title>
+    <style>
+        /* Reset some default styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set a background color and font family */
+        body {
+            font-family: 'Bree Serif', serif;
+            font-size: 1.2rem;
+            background-color: rgb(28, 170, 252);
+        }
+
+        /* Style the navigation bar */
+        .navbar {
+            background-color: #333;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-right: 20px;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* Style the content section */
+        .content {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+        }
+
+        /* Style the form groups */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        /* Style the "Add Beneficiary" button */
+        #beneficiary-form button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #beneficiary-form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Style the beneficiary list */
+        .beneficiary-list {
+            margin-top: 20px;
+            overflow-x: auto;
+        }
+
+        .beneficiary-list table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .beneficiary-list th,
+        .beneficiary-list td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ccc;
+        }
+
+        .beneficiary-list th {
+            background-color: #f5f5f5;
+        }
+
+        /* Style the "Delete" buttons */
+        .delete-button {
+            background-color: #FF5722;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .delete-button:hover {
+            background-color: #e64a19;
+        }
+        .header {
+            background: #fff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }
+        .nav-buttons{
+                position: absolute;
+                right: 120px;
+            }
+            .nav-button{
+                background: linear-gradient(to right, #3533CD, #3533cd);
+                color: #000;
+                border: #595858;
+                padding: 1px 2px;
+                white-space: 1px;
+                border-radius: 25px;
+                box-sizing: border-box;
+                width: 180px;
+                height: 39.1px;
+                font-size: 22px;
+                font-weight: bolder;
+                margin-right: 10px;
+            }
+
+    </style>
+</head>
+
+<body>
+    <div>
+        <header class="header">
+            <div>
+                <img src="background/1000023817_96cb67484916c4d4b898885b5bc99abd-25_12_2022__8_13_47_pm-removebg-preview-removebg-preview.png" alt="logo" width="130px">
+            </div>
+            <div class="nav-buttons">
+                <button class="nav-button">Savings</button>
+                <button class="nav-button">Current</button>
+                <button class="nav-button">Funds Transfer</button>
+                <button class="nav-button">Funds Status</button>
+            </div>
+        </header>
+    </div>
+
+    <div class="content">
+        <h2>Beneficiary Creation</h2>
+        <form id="beneficiary-form">
+            <div class="form-group">
+                <label for="beneficiaryName">Beneficiary Name:</label>
+                <input type="text" id="beneficiaryName" name="beneficiaryName" required>
+            </div>
+            <div class="form-group">
+                <label for="bankName">Bank Name:</label>
+                <input type="text" id="bankName" name="bankName" required>
+            </div>
+            <div class="form-group">
+                <label for="bankAccountNumber">Bank Account Number:</label>
+                <input type="text" id="bankAccountNumber" name="bankAccountNumber" required>
+            </div>
+            <div class="form-group">
+                <label for="ifscCode">IFSC Code:</label>
+                <input type="text" id="ifscCode" name="ifscCode" required>
+            </div>
+            <button type="submit">Add Beneficiary</button>
+        </form>
+
+        <div class="beneficiary-list">
+            <h3>Added Beneficiaries</h3>
+            <table>
+                <tr>
+                    <th>Beneficiary Name</th>
+                    <th>Bank Name</th>
+                    <th>Bank Account Number</th>
+                    <th>IFSC Code</th>
+                    <th>Action</th>
+                </tr>
+                <tbody id="beneficiaryListTableBody">
+                    <!-- Beneficiary list will be added here dynamically -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const beneficiaryForm = document.getElementById("beneficiary-form");
+            const beneficiaryListTableBody = document.getElementById("beneficiaryListTableBody");
+
+            // Display the list of added beneficiaries in the table
+            function displayBeneficiaryList() {
+                beneficiaryListTableBody.innerHTML = ""; // Clear existing rows
+
+                const beneficiaries = JSON.parse(localStorage.getItem("beneficiaries")) || [];
+                beneficiaries.forEach(function (beneficiary) {
+                    const newRow = document.createElement("tr");
+                    newRow.innerHTML = `
+                <td>${beneficiary.beneficiaryName}</td>
+                <td>${beneficiary.bankName}</td>
+                <td>${beneficiary.bankAccountNumber}</td>
+                <td>${beneficiary.ifscCode}</td>
+                <td><button class="delete-button" data-account="${beneficiary.bankAccountNumber}">Delete</button></td>
+            `;
+
+                    beneficiaryListTableBody.appendChild(newRow);
+                });
+            }
+
+            // Add a new beneficiary
+            beneficiaryForm.addEventListener("submit", function (event) {
+                event.preventDefault();
+
+                const beneficiaryName = document.getElementById("beneficiaryName").value;
+                const bankName = document.getElementById("bankName").value;
+                const bankAccountNumber = document.getElementById("bankAccountNumber").value;
+                const ifscCode = document.getElementById("ifscCode").value;
+
+                const beneficiaries = JSON.parse(localStorage.getItem("beneficiaries")) || [];
+                const existingBeneficiary = beneficiaries.find(function (beneficiary) {
+                    return beneficiary.bankAccountNumber === bankAccountNumber;
+                });
+
+                if (existingBeneficiary) {
+                    alert("Beneficiary with the same bank account number already exists.");
+                    return;
+                }
+
+                const newBeneficiary = {
+                    beneficiaryName,
+                    bankName,
+                    bankAccountNumber,
+                    ifscCode
+                };
+
+                beneficiaries.push(newBeneficiary);
+                localStorage.setItem("beneficiaries", JSON.stringify(beneficiaries));
+
+                displayBeneficiaryList();
+                beneficiaryForm.reset();
+            });
+
+            // Delete a beneficiary
+            beneficiaryListTableBody.addEventListener("click", function (event) {
+                if (event.target.classList.contains("delete-button")) {
+                    const accountNumber = event.target.getAttribute("data-account");
+                    deleteBeneficiary(accountNumber);
+                }
+            });
+
+            function deleteBeneficiary(accountNumber) {
+                const beneficiaries = JSON.parse(localStorage.getItem("beneficiaries")) || [];
+                const updatedBeneficiaries = beneficiaries.filter(function (beneficiary) {
+                    return beneficiary.bankAccountNumber !== accountNumber;
+                });
+
+                localStorage.setItem("beneficiaries", JSON.stringify(updatedBeneficiaries));
+                displayBeneficiaryList();
+            }
+
+            displayBeneficiaryList(); // Display beneficiaries on page load
+        });
+
+
+    </script>
+</body>
+
+</html>

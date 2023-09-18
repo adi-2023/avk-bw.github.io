@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>AVK-BW/home-page</title>
+    <style>
+        body {
+            background:linear-gradient(to right,  #595858, #3533cd);
+            border-color: #000;
+            margin: 0px;
+            padding: 0px;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: white;
+            margin: auto;
+            width: 100%;
+            
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+       
+        .nav-buttons button{
+            
+            margin-right: 10px;
+            padding: 5px 10px;
+            background-color: #3533cd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            position: relative;
+            top:120px;
+            left:25%;
+        }
+        .nav-buttons{
+            background-color: white;
+            width: 420px;
+            height: 500px;
+            position: absolute;
+            top: 145px;
+            left: 22%;
+        }
+        .button1 {
+            background: linear-gradient(to right, #5741c6, #5741c6);
+            color: #000;
+            border: #595858;
+            padding: 1px 2px;
+            white-space: 1px;
+            border-radius: 35px;
+            box-sizing: border-box;
+            width: 180px;
+            height: 49.1px;
+            font-size: 22px;
+            font-weight: bolder;
+            margin-right: 10px;
+        }
+        .Services {
+            background-color: whitesmoke;
+            padding: 20px;
+            flex-grow: 0;
+            width: 400px;
+            height: 460px;
+            position: absolute;
+            top: 145px;
+            right: 21%;
+        }
+        .Services ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            position: relative;
+            top:120px;
+            left:25%;
+        }
+        .Services ul li {
+            margin-bottom: 5px;
+            font-size: 120%;
+        }
+        .header{
+            background-color: white;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            height: 40px;
+        }    
+        .header h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <header class="header">
+            <img src="background/1000023817_96cb67484916c4d4b898885b5bc99abd-25_12_2022__8_13_47_pm-removebg-preview-removebg-preview.png" alt="logo" width="120px">    
+            <h1>Home Page</h1>
+        </header>
+    </div>
+    <div class="container">
+        <div class="nav-button1">
+            <div class="nav-buttons">
+                
+                    <button class="button1" onclick="window.location.href='http://127.0.0.1:5500/accountpage.html'">Banking</button>
+                    <br>
+                    <br>
+                    <button class="button1" onclick="window.location.href='http://127.0.0.1:5500/accountpage.html'">Current</button>
+                    <br>
+                    <br>
+                    <button class="button1" onclick="window.location.href='http://127.0.0.1:5500/Transfer.html'">FundsTransfer</button>
+                    <br>
+                    <br>
+                    <button class="button1" onclick="window.location.href='http://127.0.0.1:5500/services.html'">Funds Status</button>
+                
+            </div>
+        </div>
+        <div class="Services">
+            
+            <ul>
+            <h1>Services:</h1>
+                <li><a href="https://onlineapply.sbi.co.in/personal-banking/personal-loan">Personal Loan</a></li>
+                <li><a href="https://sbi.co.in/web/interest-rates/interest-rates/loan-schemes-interest-rates/auto-loans">Auto Loan</a></li>
+                <li><a href="https://homeloans.sbi/">Home Loan</a></li>
+                <li><a href="https://sbi.co.in/web/student-platform/sbi-student-loan-scheme#:~:text=SBI%20Student%20Loan%20Scheme%20A%20term%20loan%20granted,upfront%20charges%20will%20be%20levied%20on%20Education%20loans.">Student Loan</a></li>
+                <li><a href="https://sbi.co.in/web/business/sme/sme-loans/simplified-small-business-loan">Business Loan</a></li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        // JavaScript to open links when buttons are clicked
+        document.addEventListener("DOMContentLoaded", function () {
+            const bankingButton = document.querySelector("#banking-button");
+            const currentButton = document.querySelector("#current-button");
+            const fundsTransferButton = document.querySelector("#funds-transfer-button");
+            const fundsStatusButton = document.querySelector("#funds-status-button");
+    
+            // Event listeners for button clicks
+            bankingButton.addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:5500/accountpage.html";
+            });
+    
+            currentButton.addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:5500/accountpage.html";
+            });
+    
+            fundsTransferButton.addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:5500/Transfer.html";
+            });
+    
+            fundsStatusButton.addEventListener("click", function () {
+                window.location.href = "http://127.0.0.1:5500/services.html";
+            });
+        });
+    </script>
+    
+</body>
+</html>
